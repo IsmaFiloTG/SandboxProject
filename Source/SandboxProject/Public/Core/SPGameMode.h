@@ -4,15 +4,15 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
-#include "SandboxProjectGameMode.generated.h"
+#include "SPGameMode.generated.h"
 
 UCLASS(minimalapi)
-class ASandboxProjectGameMode : public AGameModeBase
+class ASPGameMode : public AGameModeBase
 {
 	GENERATED_BODY()
 
 public:
-	ASandboxProjectGameMode();
+	ASPGameMode();
 };
 
 

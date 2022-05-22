@@ -4,15 +4,15 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
-#include "SandboxProjectCharacter.generated.h"
+#include "SPPlayerCharacter.generated.h"
 
 UCLASS(Blueprintable)
-class ASandboxProjectCharacter : public ACharacter
+class ASPPlayerCharacter : public ACharacter
 {
 	GENERATED_BODY()
 
 public:
-	ASandboxProjectCharacter();
+	ASPPlayerCharacter();
 
 	// Called every frame.
 	virtual void Tick(float DeltaSeconds) override;

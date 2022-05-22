@@ -5,18 +5,18 @@
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
 #include "GameFramework/PlayerController.h"
-#include "SandboxProjectPlayerController.generated.h"
+#include "SPPlayerController.generated.h"
 
 /** Forward declaration to improve compiling times */
 class UNiagaraSystem;
 
 UCLASS()
-class ASandboxProjectPlayerController : public APlayerController
+class ASPPlayerController : public APlayerController
 {
 	GENERATED_BODY()
 
 public:
-	ASandboxProjectPlayerController();
+	ASPPlayerController();
 
 	/** Time Threshold to know if it was a short press */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)

@@ -1,20 +1,20 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
-#include "Core/SandboxProjectPlayerController.h"
+#include "Core/SPPlayerController.h"
 #include "GameFramework/Pawn.h"
 #include "Blueprint/AIBlueprintHelperLibrary.h"
 #include "NiagaraSystem.h"
 #include "NiagaraFunctionLibrary.h"
-#include "Core/SandboxProjectCharacter.h"
+#include "Core/SPPlayerCharacter.h"
 #include "Engine/World.h"
 
-ASandboxProjectPlayerController::ASandboxProjectPlayerController()
+ASPPlayerController::ASPPlayerController()
 {
 	bShowMouseCursor = true;
 	DefaultMouseCursor = EMouseCursor::Default;
 }
 
-void ASandboxProjectPlayerController::PlayerTick(float DeltaTime)
+void ASPPlayerController::PlayerTick(float DeltaTime)
 {
 	Super::PlayerTick(DeltaTime);
 
@@ -49,21 +49,21 @@ void ASandboxProjectPlayerController::PlayerTick(float DeltaTime)
 	}
 }
 
-void ASandboxProjectPlayerController::SetupInputComponent()
+void ASPPlayerController::SetupInputComponent()
 {
 	// set up gameplay key bindings
 	Super::SetupInputComponent();
 
-	InputComponent->BindAction("SetDestination", IE_Pressed, this, &ASandboxProjectPlayerController::OnSetDestinationPressed);
-	InputComponent->BindAction("SetDestination", IE_Released, this, &ASandboxProjectPlayerController::OnSetDestinationReleased);
+	InputComponent->BindAction("SetDestination", IE_Pressed, this, &ASPPlayerController::OnSetDestinationPressed);
+	InputComponent->BindAction("SetDestination", IE_Released, this, &ASPPlayerController::OnSetDestinationReleased);
 
 	// support touch devices 
-	InputComponent->BindTouch(EInputEvent::IE_Pressed, this, &ASandboxProjectPlayerController::OnTouchPressed);
-	InputComponent->BindTouch(EInputEvent::IE_Released, this, &ASandboxProjectPlayerController::OnTouchReleased);
+	InputComponent->BindTouch(EInputEvent::IE_Pressed, this, &ASPPlayerController::OnTouchPressed);
+	InputComponent->BindTouch(EInputEvent::IE_Released, this, &ASPPlayerController::OnTouchReleased);
 
 }
 
-void ASandboxProjectPlayerController::OnSetDestinationPressed()
+void ASPPlayerController::OnSetDestinationPressed()
 {
 	// We flag that the input is being pressed
 	bInputPressed = true;
@@ -71,7 +71,7 @@ void ASandboxProjectPlayerController::OnSetDestinationPressed()
 	StopMovement();
 }
 
-void ASandboxProjectPlayerController::OnSetDestinationReleased()
+void ASPPlayerController::OnSetDestinationReleased()
 {
 	// Player is no longer pressing the input
 	bInputPressed = false;
@@ -91,13 +91,13 @@ void ASandboxProjectPlayerController::OnSetDestinationReleased()
 	}
 }
 
-void ASandboxProjectPlayerController::OnTouchPressed(const ETouchIndex::Type FingerIndex, const FVector Location)
+void ASPPlayerController::OnTouchPressed(const ETouchIndex::Type FingerIndex, const FVector Location)
 {
 	bIsTouch = true;
 	OnSetDestinationPressed();
 }
 
-void ASandboxProjectPlayerController::OnTouchReleased(const ETouchIndex::Type FingerIndex, const FVector Location)
+void ASPPlayerController::OnTouchReleased(const ETouchIndex::Type FingerIndex, const FVector Location)
 {
 	bIsTouch = false;
 	OnSetDestinationReleased();
